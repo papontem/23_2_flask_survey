@@ -13,51 +13,34 @@ debug = DebugToolbarExtension(app)
 
 # PAM: outmost storage of users responses as they travers through rpute ioon their way to complete survey
 responses = []
+# PAM: You have the avility to chose between two surveys. surveys = {"satisfaction": satisfaction_survey,"personality": personality_quiz}
+selected_survey = surveys["satisfaction"] #focusing on this one for now
+# selected_survey = surveys["personality"]
 
 @app.route('/') #decorator expecting a function
 def homepage(): #the function that will be executed when decorator is flagged
-    """Show homepage. PAM: render a page that shows the user the title of the survey, the instructions, and a button to start the survey."""
+    """TODO: Step 2
+    Show homepage. 
+    PAM: render template for startpage that shows the user the title of the survey, the instructions, and a button to start the survey.
+    """
     
-    # PAM: You have the avility to chose between two surveys
-    # surveys = {"satisfaction": satisfaction_survey,"personality": personality_quiz}
-    selected_survey = surveys["satisfaction"] #focusing on this one for now
-    # selected_survey = surveys["personality"]
 
-    # html = f"""
-    # <html lang="en">
-	# <head>
-	# 	<meta charset="UTF-8" />
-	# 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		
-	# 	<!--V-ANIMATED-Tab-Icon-V-->
-	# 	<link rel="icon" type="gif" href="/static/pam_favicon_animated.gif" />
-
-	# 	<title> Flask Survey Homepage </title>
-	# </head>
-    #     <body>
-    #         <main>
-    #             <header>
-    #                 <h1>Home</h1>
-    #                 <p>Welcome to this simple Flask Survey app</p>
-    #             </header>
-    #             <hr/>
-    #             <h2>{selected_survey.title}</h2>
-    #             <h3>Instructions</h3>
-    #             <p>
-    #                 {selected_survey.instructions}
-    #             <p>
-    #             <form action="/questions/0">
-    #                 <button>Start!</button>
-    #             </form>
-    #             <hr/>
-    #             <footer>
-	# 			<section class="Footer_Content">
-	# 				<p>&copy; Phedias A.M. All Rights Reserved</p>
-	# 			</section>
-	# 		</footer>
-    #         </main>
-    #     </body>
-    # </html>
-    # """
-    # return html
     return render_template("startpage.html", selected_survey=selected_survey)
+
+
+@app.route('/questions/<int:question_id>')
+def show_desired_question(question_id):
+    """TODO: Step 3
+    renders questions template for any question from the selected survey.
+    Shows a form with the current question, listing choices as radio options, TODO: add a text field if a text field is allowed.
+    Form's action is a post request to route /answer with the users answer.
+    """
+
+    return render_template("question.html", question_id = question_id, selected_survey=selected_survey)
+
+@app.route("/answer", methods=["POST"])
+def get_question_answer():
+    """ PAM TODO: WEll touch this in step 4"""
+
+    html = f"{responses}"
+    return html

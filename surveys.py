@@ -2,7 +2,7 @@ class Question:
     """Question on a questionnaire."""
 
     def __init__(self, question, choices=["Yes", "No"], allow_text=False):
-        """Create question (assume Yes/No for choices.
+        """Create question (assume Yes/No for choices.)
         PAM: Initializes a Question object.
         
         Args:
@@ -12,7 +12,7 @@ class Question:
         
         """
 
-        # PAM: better to just default choices to yes or no in the constructor definition
+        # PAM:Icommented this code block out because its better to just default choices to yes or no in the constructor definition
         # if not choices:
         #     choices = ["Yes", "No"] 
 

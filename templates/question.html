@@ -1,0 +1,20 @@
+<!-- prettier-ignore -->
+{% extends 'base.html'%} 
+
+{% block title%}Question #{{question_id}} {% endblock%}
+
+{% block content %}
+<h2>{{selected_survey.title}}</h2>
+<h3>Question #{{question_id}}</h3>
+<!-- make sure action equals to the route we want for its inputs data under variable 'name' to be sent to -->
+<p>{{selected_survey.questions[question_id].question}}</p>
+<form action="/answer">
+	<input type="radio" id="no" name="choice" value="no" />
+	<label for="no">NO</label>
+	<br />
+	<input type="radio" id="yes" name="choice" value="yes" />
+	<label for="yes">YES</label>
+	<br />
+	<button>Submit!</button>
+</form>
+{% endblock %}
