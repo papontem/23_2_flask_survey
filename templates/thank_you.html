@@ -6,9 +6,11 @@
 {% block content %}
 
 <h2>Thank You For Filling Up Our Survey</h2>
+<h3>Responses:</h3>
 <ol>
 	{% for response in responses %}
 	<li><p>{{response}}</p></li>
 	{% endfor %}
 </ol>
+
 {% endblock %}
