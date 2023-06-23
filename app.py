@@ -44,6 +44,8 @@ def show_desired_question(question_id):
     
     TODO: Step 7: Flash Messages
     Using flash, if the user does try to tinker with the URL and visit questions out of order, flash a message telling them they're trying to access an invalid question as part of your redirect.
+
+    TODO: Step 8: didnt know about session so ill leave it here for now.
     """
 
     # Once they've answered all of the questions, trying to access any of the question pages should redirect them to the thank you page.
